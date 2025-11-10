@@ -2,19 +2,22 @@ package Ejemplo3;
 
 public class Prueba {
     public static void main(String[] args) {
-        Manejador a = new ManejadorAutenticacion();
-        Manejador v = new ManejadorValidacion();
-        Manejador p = new ManejadorPedido();
+        // Crear los manejadores
+        Manejador autenticador = new ManejadorAutenticacion();
+        Manejador validador = new ManejadorValidacion();
+        Manejador pedido = new ManejadorPedido();
 
-        // Formar la cadena
-        a.setSiguiente(v);
-        v.setSiguiente(p);
+        // Formamos la cadena
+        autenticador.setSiguiente(validador);
+        validador.setSiguiente(pedido);
 
-        // Probar la cadena
+        // Probamos la cadena
+        //Para un caso de exito
         System.out.println("---- Prueba 1 ----");
-        a.manejar("usuario_valido");
+        autenticador.manejar("usuario_valido");
 
+        //Para un caso de fallo
         System.out.println("\n---- Prueba 2 ----");
-        a.manejar("usuario_invalido");
+        autenticador.manejar("usuario_invalido");
     }
 }
